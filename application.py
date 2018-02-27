@@ -20,6 +20,7 @@ application.secret_key = 'cC1YCIWOj9GgWspgNEo2'
 @application.route('/', methods=['GET', 'POST'])
 @application.route('/index', methods=['GET', 'POST'])
 def index():
+    print('<p>Hello world</p>')
     form1 = EnterDBInfo(request.form)
     form2 = RetrieveDBInfo(request.form)
 
