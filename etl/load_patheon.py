@@ -1,6 +1,6 @@
 
-PANTHEON_FILE = '../pantheon.csv'
-OUTPUT_PANTHEON = '../output_pantheon.csv'
+PANTHEON_FILE = '../data/pantheon.csv'
+OUTPUT_PANTHEON = '../data/output_pantheon.csv'
 import csv
 import wikipedia
 import json
