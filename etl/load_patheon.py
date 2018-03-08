@@ -1,18 +1,19 @@
 
 PANTHEON_FILE = '../data/pantheon.csv'
-OUTPUT_PANTHEON = '../data/output_pantheon.csv'
+OUTPUT_PANTHEON = '../data/for_test.json'
 import csv
 import wikipedia
 import json
 
 
-counter = 3
+counter = 30
 curr = 0
 
 to_write = {}
 with open(PANTHEON_FILE, 'r') as inputfile:
     reader = csv.DictReader(inputfile)
     for row in reader:
+        print ('current ==> ', curr)
         try:
             wp = wikipedia.page(pageid=row['article_id'])
             data = {
@@ -25,8 +26,13 @@ with open(PANTHEON_FILE, 'r') as inputfile:
                 'popularity_score': row['historical_popularity_index']}
             to_write[row.get('article_id')] = data
         except Exception as e:
-            print ('Error ', e.__str__())
+            print ('!!!!Error ', e.__str__())
+            print ('ERROR ')
             continue
+        if curr < counter:
+            curr += 1
+        else:
+            break
 
 with open(OUTPUT_PANTHEON, 'w') as outputfile:
     json.dump(to_write, outputfile)
