@@ -19,9 +19,7 @@ with open(OUTPUT_PANTHEON, 'r+') as orgfile:
         plain_text = val.get('plain_txt')
         words = word_tokenize(plain_text)
         RAW_TEXTS.append([word for word in words if word not in STOPWORDS and len(word) > 2])
-        curr =+ 1
-        if curr > testnum:
-            break
+
 
 
 
@@ -44,14 +42,3 @@ dictionary.save('../data/TEST.dict')
 corpus = [dictionary.doc2bow(text) for text in RAW_TEXTS]
 corpora.MmCorpus.serialize('../data/testcorpus.mm', corpus)
 
-
-# data = "All work and no play makes jack dull boy. All work and no play makes jack a dull boy."
-# stopWords = set(stopwords.words('english'))
-# words = word_tokenize(data)
-# wordsFiltered = []
-#
-# for w in words:
-#     if w not in stopWords:
-#         wordsFiltered.append(w)
-#
-# print(wordsFiltered)
