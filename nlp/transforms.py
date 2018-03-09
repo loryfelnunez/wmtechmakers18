@@ -8,10 +8,14 @@ corpus = corpora.MmCorpus('../data/testcorpus.mm')
 
 tfidf = models.TfidfModel(corpus)
 
+lsi = models.LsiModel(corpus)
+
 corpus_tfidf = tfidf[corpus]
+corpus_lsi = lsi[corpus]
 
 
-index = similarities.MatrixSimilarity(corpus_tfidf)
+index_tfidf = similarities.MatrixSimilarity(corpus_tfidf)
+index_lsi = similarities.MatrixSimilarity(corpus_lsi)
 
 doc = """Socrates (/ˈsɒkrətiːz/;[2] Greek: Σωκράτης [sɔːkrátɛːs], Sōkrátēs; c. 470 – 399 BC)[3][4] 
 was a classical Greek (Athenian) philosopher credited as one of the founders of Western philosophy, and 
@@ -34,7 +38,15 @@ philosophy that has followed."""
 
 
 vec_bow = dictionary.doc2bow(doc.lower().split())
+
+print (vec_bow)
+print ("====")
+
 vec_tfidf = tfidf[vec_bow]
+print (vec_tfidf)
+print ("====")
+exit(0)
+vec_lsi = lsi[vec_bow]
 
 import json
 OUTPUT_PANTHEON = '../data/for_test.json'
@@ -44,6 +56,7 @@ with open(OUTPUT_PANTHEON, 'r+') as orgfile:
     counter = 0
     for key, val in json_data.items():
         plain_text = val.get('plain_txt')
+        url = 'https://en.wikipedia.org/wiki?curid={}'.format(article_id)
         DOCS[counter] = plain_text
         counter += 1
 
@@ -51,9 +64,9 @@ with open(OUTPUT_PANTHEON, 'r+') as orgfile:
 from gensim.test.utils import common_corpus, common_dictionary, get_tmpfile
 from gensim import corpora, models, similarities
 index_tmpfile = get_tmpfile("index")
-index_all = similarities.Similarity(index_tmpfile, corpus_tfidf, num_features=len(dictionary))
+index_all = similarities.Similarity(index_tmpfile, corpus_lsi, num_features=len(dictionary))
 
-for similarities in index:
+for similarities in index_lsi:
     print ("START ======== ")
     sims = sorted(enumerate(similarities), key=lambda item: -item[1])
     for sim in sims:

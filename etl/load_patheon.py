@@ -1,6 +1,6 @@
 
 PANTHEON_FILE = '../data/pantheon.csv'
-OUTPUT_PANTHEON = '../data/for_test.json'
+OUTPUT_PANTHEON = '../data/all_wiki.json'
 import csv
 import wikipedia
 import json
@@ -27,12 +27,11 @@ with open(PANTHEON_FILE, 'r') as inputfile:
             to_write[row.get('article_id')] = data
         except Exception as e:
             print ('!!!!Error ', e.__str__())
-            print ('ERROR ')
             continue
-        if curr < counter:
-            curr += 1
-        else:
-            break
+        # if curr < counter:
+        #     curr += 1
+        # else:
+        #     break
 
 with open(OUTPUT_PANTHEON, 'w') as outputfile:
     json.dump(to_write, outputfile)
