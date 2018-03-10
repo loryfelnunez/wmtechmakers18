@@ -13,13 +13,17 @@ Flask-WTF==0.10.3
 futures==3.2.0
 gensim==3.4.0
 idna==2.6
+ijson==2.3
 itsdangerous==0.24
 Jinja2==2.7.3
 jmespath==0.9.3
 MarkupSafe==0.23
+nltk==3.2.5
 numpy==1.14.1
+pandas==0.22.0
 PyMySQL==0.6.3
 python-dateutil==2.6.1
+pytz==2018.3
 requests==2.18.4
 s3transfer==0.1.13
 scipy==1.0.0
