@@ -15,7 +15,7 @@ gensim==3.4.0
 idna==2.6
 ijson==2.3
 itsdangerous==0.24
-Jinja2==2.7.3
+Jinja2==2.11.3
 jmespath==0.9.3
 MarkupSafe==0.23
 nltk==3.2.5
