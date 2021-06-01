@@ -30,7 +30,7 @@ scipy==1.0.0
 six==1.11.0
 smart-open==1.5.6
 SQLAlchemy==0.9.8
-urllib3==1.22
+urllib3==1.26.5
 Werkzeug==0.9.6
 wikipedia==1.4.0
 WTForms==2.0.1
